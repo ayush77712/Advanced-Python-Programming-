@@ -67,28 +67,27 @@ class Library:
             print(book)
 
 
-# Main Program
+
 library = Library()
 
-# Add Books
+
 library.add_book(Book(101, "Python Programming", "Guido van Rossum"))
 library.add_book(Book(102, "Data Structures", "Mark Allen"))
 
-# Register Patrons
+
 library.register_patron(Patron(1, "Rahul"))
 library.register_patron(Patron(2, "Priya"))
 
-# Display Books
+
 library.display_books()
 
-# Issue Book
+
 library.issue_book(101, 1)
 
-# Display Books
+
 library.display_books()
 
-# Return Book
+
 library.return_book(101, 1)
 
-# Display Books
 library.display_books()
