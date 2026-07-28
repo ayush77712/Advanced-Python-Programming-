@@ -1,0 +1,80 @@
+def border(func):
+    def wrapper(self):
+        return "*" * 30 + "\n" + func(self) + "\n" + "*" * 30
+    return wrapper
+
+def uppercase(func):
+    def wrapper(self):
+        return func(self).upper()
+    return wrapper
+
+def footer(func):
+    def wrapper(self):
+        return func(self) + "\nEnd of Report"
+    return wrapper
+
+class Report:
+    template = "General Report"
+
+    def __init__(self, title, author, date, content):
+        self.title = title
+        self.author = author
+        self.date = date
+        self.content = content
+
+    @classmethod
+    def set_template(cls, t):
+        cls.template = t
+
+    @border
+    @uppercase
+    @footer
+    def generate(self):
+        return f"""Template : {Report.template}
+Title : {self.title}
+Author : {self.author}
+Date : {self.date}
+Content : {self.content}"""
+
+    def __str__(self):
+        return self.title
+
+    def __len__(self):
+        return len(self.content)
+
+    def __eq__(self, other):
+        return self.title == other.title
+
+    def __add__(self, other):
+        return self.content + "\n" + other.content
+
+print("1.Student")
+print("2.Employee")
+print("3.Sales")
+ch = int(input("Enter choice: "))
+
+if ch == 1:
+    Report.set_template("Student Report")
+elif ch == 2:
+    Report.set_template("Employee Report")
+else:
+    Report.set_template("Sales Report")
+
+title = input("Enter Title: ")
+author = input("Enter Author: ")
+date = input("Enter Date: ")
+content = input("Enter Content: ")
+
+r1 = Report(title, author, date, content)
+
+title2 = input("Enter Second Report Title: ")
+content2 = input("Enter Second Report Content: ")
+
+r2 = Report(title2, author, date, content2)
+
+print(r1)
+print("Characters:", len(r1))
+print("Same Report:", r1 == r2)
+print("Combined Content:")
+print(r1 + r2)
+print(r1.generate())
