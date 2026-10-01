@@ -5,10 +5,10 @@ arr = np.arange(1, 11)
 print("Original Array:", arr)
 
 print("Slicing [1:5]:", arr[1:5])
-print("First Three Elements:", arr[:3])
-print("Last Three Elements:", arr[-3:])
+print("First 5 Elements:", arr[:5])
+print("Last 5 Elements:", arr[5:])
 print("Every Second Element:", arr[::2])
-print("Reverse Array:", arr[::-1])
+print("Elements from index 2 to 6:", arr[2:7])
 
 print("Sum:", np.sum(arr))
 print("Mean:", np.mean(arr))
